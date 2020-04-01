@@ -123,11 +123,10 @@ matrix:
 install:
   - python -m pip install -U pip
   - python -m pip install cibuildwheel==1.1.0
-  - python -m pip install codecov tox twine
+  - python -m pip install --no-build-isolation codecov tox twine
 script:
   - tox tests
   - codecov
-  - git stash --all # Restore fresh checkout
   - cibuildwheel --output-dir dist
 deploy:
   - provider: pypi
