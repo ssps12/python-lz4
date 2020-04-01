@@ -8,7 +8,25 @@ matrix:
         - docker
       env:
         - CIBW_BUILD=cp35-*
+    - name: linux-py35
+      arch: arm64
+      language: python
+      python: 3.5
+      sudo: required
+      services:
+        - docker
+      env:
+        - CIBW_BUILD=cp35-*
     - name: linux-py36
+      language: python
+      python: 3.6
+      sudo: required
+      services:
+        - docker
+      env:
+        - CIBW_BUILD=cp36-*
+    - name: linux-py36
+      arch: arm64
       language: python
       python: 3.6
       sudo: required
@@ -25,7 +43,27 @@ matrix:
         - docker
       env:
         - CIBW_BUILD=cp37-*
+    - name: linux-py37
+      arch: arm64
+      language: python
+      python: 3.7
+      dist: xenial
+      sudo: required
+      services:
+        - docker
+      env:
+        - CIBW_BUILD=cp37-*
     - name: linux-py38
+      language: python
+      python: 3.8
+      dist: xenial
+      sudo: required
+      services:
+        - docker
+      env:
+        - CIBW_BUILD=cp38-*
+    - name: linux-py38
+      arch: arm64
       language: python
       python: 3.8
       dist: xenial
