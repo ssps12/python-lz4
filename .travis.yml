@@ -16,7 +16,7 @@ matrix:
       services:
         - docker
       env:
-        - CIBW_BUILD=cp35-*
+        - CIBW_BUILD=cp35-manylinux_aarch64
     - name: linux-py36
       language: python
       python: 3.6
@@ -33,7 +33,8 @@ matrix:
       services:
         - docker
       env:
-        - CIBW_BUILD=cp36-*
+        - PIP_NO_CACHE_DIR=off
+        - CIBW_BUILD=cp36-manylinux_aarch64
     - name: linux-py37
       language: python
       python: 3.7
@@ -52,7 +53,8 @@ matrix:
       services:
         - docker
       env:
-        - CIBW_BUILD=cp37-*
+        - PIP_NO_CACHE_DIR=off
+        - CIBW_BUILD=cp38-manylinux_aarch64
     - name: linux-py38
       language: python
       python: 3.8
@@ -71,7 +73,8 @@ matrix:
       services:
         - docker
       env:
-        - CIBW_BUILD=cp38-*
+        - PIP_NO_CACHE_DIR=off
+        - CIBW_BUILD=cp38-manylinux_aarch64
     - name: osx-py35
       os: osx
       language: generic
@@ -123,10 +126,11 @@ matrix:
 install:
   - python -m pip install -U pip
   - python -m pip install cibuildwheel==1.1.0
-  - sudo python -m pip install codecov tox twine
+  - python -m pip install codecov tox twine
 script:
   - tox tests
   - codecov
+  - git stash --all # Restore fresh checkout
   - cibuildwheel --output-dir dist
 deploy:
   - provider: pypi
