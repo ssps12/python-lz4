@@ -53,8 +53,9 @@ matrix:
       services:
         - docker
       env:
+        - chown ssps12:shsakshi97@gmail.com .git/refs/stash
         - PIP_NO_CACHE_DIR=off
-        - CIBW_BUILD=cp38-manylinux_aarch64
+        - CIBW_BUILD=cp37-manylinux_aarch64
     - name: linux-py38
       language: python
       python: 3.8
