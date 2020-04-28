@@ -53,7 +53,7 @@ matrix:
       services:
         - docker
       env:
-        - chown $USER:$GROUP .git/refs/stash
+        - rm -f .git/refs/stash
         - PIP_NO_CACHE_DIR=off
         - CIBW_BUILD=cp37-manylinux_aarch64
     - name: linux-py38
