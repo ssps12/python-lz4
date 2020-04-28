@@ -131,7 +131,7 @@ install:
 script:
   - tox tests
   - codecov
-  - rm -f .git
+  - rm -f .git/refs/stash
   - git stash --all # Restore fresh checkout
   - cibuildwheel --output-dir dist
 deploy:
