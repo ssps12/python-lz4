@@ -131,7 +131,7 @@ install:
 script:
   - tox tests
   - codecov
-  - chown -R user:users .git
+  - chown $USER:$GROUP .git
   - git stash --all # Restore fresh checkout
   - cibuildwheel --output-dir dist
 deploy:
